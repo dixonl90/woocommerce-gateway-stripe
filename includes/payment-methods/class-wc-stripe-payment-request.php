@@ -179,7 +179,9 @@ class WC_Stripe_Payment_Request {
 			return;
 		}
 
-		WC()->session->set_customer_session_cookie( true );
+		if ( WC_Stripe_Helper::should_load_scripts_on_product_page() ) {
+			WC()->session->set_customer_session_cookie( true );
+		}
 	}
 
 	/**
